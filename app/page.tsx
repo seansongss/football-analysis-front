@@ -1,6 +1,8 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { FileForm } from '@/components/file-form'
+import { LabelDemo } from '@/components/term-checkbox'
 
 export default function HomePage() {
   const [file, setFile] = useState<File| null>(null)
@@ -20,14 +22,18 @@ export default function HomePage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file"
-             accept="video/*"
-             onChange={e => setFile(e.target.files?.[0] ?? null)}
-      />
-      <button type="submit" disabled={!file}>
-        Upload & Process
-      </button>
-    </form>
+    <>
+      <FileForm />
+      <LabelDemo />
+      <form onSubmit={handleSubmit}>
+        <input type="file"
+              accept="video/*"
+              onChange={e => setFile(e.target.files?.[0] ?? null)}
+        />
+        <button type="submit" disabled={!file}>
+          Upload & Process
+        </button>
+      </form>
+    </>
   )
 }
