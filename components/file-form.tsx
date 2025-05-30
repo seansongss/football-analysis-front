@@ -7,6 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 export function FileForm({
   className,
+  setFile,
   ...props
 }: React.ComponentProps<"div">) {
   return (
@@ -24,6 +25,12 @@ export function FileForm({
                   type="file"
                   accept="video/mp4"
                   placeholder="Video file"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0]
+                    if (file) {
+                      setFile(file)
+                    }
+                  }}
                   required
                 />
               </div>
@@ -31,7 +38,7 @@ export function FileForm({
                 <Checkbox id="terms" required />
                 <Label htmlFor="terms">Accept terms and conditions</Label>
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full cursor-pointer">
                 Process
               </Button>
             </div>
@@ -39,7 +46,7 @@ export function FileForm({
         </CardContent>
       </Card>
       <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        By clicking process, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
       </div>
     </div>
   )
