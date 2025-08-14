@@ -8,6 +8,10 @@ export default function StatusPage() {
   const [outputUrl, setOutputUrl] = useState<string>('')
 
   useEffect(() => {
+    document.title = `Football Analytics - Status ${jobId}`
+  }, [jobId])
+
+  useEffect(() => {
     const interval = setInterval(async () => {
       const res = await fetch(`/api/status/${jobId}`)
       const data = await res.json()

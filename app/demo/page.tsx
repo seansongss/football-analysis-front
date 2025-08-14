@@ -11,6 +11,10 @@ export default function DemoPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    document.title = 'Football Analytics - Demo'
+  }, [])
+
+  useEffect(() => {
     let mounted = true
     ;(async () => {
       try {

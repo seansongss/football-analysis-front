@@ -13,6 +13,10 @@ export default function JobPage() {
   const { jobId } = useParams<{ jobId: string }>()
   const [track, setTrack] = useState<TrackFile | null>(null)
 
+  useEffect(() => {
+    document.title = `Football Analytics - Analysis`
+  }, [jobId])
+
   const { data: status } = useQuery<JobStatus>({
     queryKey: ['status', jobId],
     queryFn: async () => {
