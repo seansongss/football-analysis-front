@@ -6,7 +6,6 @@ type VideoWithRFC = HTMLVideoElement & {
   cancelVideoFrameCallback?: (handle: number) => void
 }
 import { TrackFile } from '@/lib/types'
-import MetricsTable from './MetricsTable'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import LiveMetricsTable from '@/components/LiveMetricsTable'
 
@@ -92,15 +91,9 @@ export default function VideoWithMetrics({
 
         <div className="flex flex-col gap-6">
           <Card className="bg-card text-card-foreground border-border">
-            <CardHeader><CardTitle>Live Metrics</CardTitle></CardHeader>
+            <CardHeader><CardTitle>Metrics</CardTitle></CardHeader>
             <CardContent>
               <LiveMetricsTable tracks={tracks} currentTime={currentTime} />
-            </CardContent>
-          </Card>
-          <Card className="bg-card text-card-foreground border-border">
-            <CardHeader><CardTitle>Overall Metrics</CardTitle></CardHeader>
-            <CardContent>
-              <MetricsTable tracks={tracks} />
             </CardContent>
           </Card>
         </div>
