@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server'
 
-export async function GET(_req: Request, { params }: { params: { jobId: string } }) {
-  const resp = await fetch(`${process.env.BACKEND_URL}/status/${params.jobId}`, {
+export async function GET(
+  _req: Request, 
+  { params }: { params: Promise<{ jobId: string }> }
+) {
+  const { jobId } = await params
+  const resp = await fetch(`${process.env.BACKEND_URL}/status/${jobId}`, {
     headers: { 'x-internal-api-key': process.env.INTERNAL_API_KEY ?? '' },
     cache: 'no-store',
   })
